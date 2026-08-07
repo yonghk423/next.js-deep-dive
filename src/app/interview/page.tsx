@@ -24,12 +24,16 @@ export default function InterviewIndexPage() {
               <p className="text-sm font-medium text-zinc-900 dark:text-zinc-50">
                 {chapter.title}
               </p>
-              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                {chapter.description}
-              </p>
-              <p className="mt-2 text-xs text-zinc-500">
-                섹션 {chapter.sections.length}개
-              </p>
+              {chapter.description ? (
+                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                  {chapter.description}
+                </p>
+              ) : null}
+              {chapter.sections.length > 0 ? (
+                <p className="mt-2 text-xs text-zinc-500">
+                  섹션 {chapter.sections.length}개
+                </p>
+              ) : null}
             </Link>
           </li>
         ))}

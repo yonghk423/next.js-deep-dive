@@ -9,12 +9,20 @@ export default function Home() {
       <p className="max-w-xl text-base leading-7 text-zinc-600 dark:text-zinc-400">
         면접 질문을 챕터별로 나눠, UI에서 직접 코드를 조작하며 확인합니다.
       </p>
-      <Link
-        href="/interview"
-        className="w-fit rounded bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white dark:bg-zinc-100 dark:text-zinc-900"
-      >
-        면접 실험실 열기
-      </Link>
+      <div className="flex flex-wrap gap-3">
+        <Link
+          href="/interview"
+          className="w-fit rounded bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white dark:bg-zinc-100 dark:text-zinc-900"
+        >
+          면접 실험실 열기
+        </Link>
+        <Link
+          href="/users"
+          className="w-fit rounded border border-zinc-300 px-4 py-2.5 text-sm font-medium text-zinc-800 dark:border-zinc-600 dark:text-zinc-100"
+        >
+          유저 테이블 보기
+        </Link>
+      </div>
     </div>
   );
 }

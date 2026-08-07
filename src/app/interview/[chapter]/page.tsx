@@ -1,4 +1,6 @@
+import { ClosureChapter } from "@/components/interview/chapters/ClosureChapter";
 import { ReactMemoChapter } from "@/components/interview/chapters/ReactMemoChapter";
+import { TypeScriptChapter } from "@/components/interview/chapters/TypeScriptChapter";
 import { UseCallbackUseMemoChapter } from "@/components/interview/chapters/UseCallbackUseMemoChapter";
 import { DefinitionList } from "@/components/interview/DefinitionList";
 import {
@@ -10,10 +12,14 @@ import { notFound } from "next/navigation";
 
 const chapterViews: Record<
   string,
-  (props: { chapter: InterviewChapter }) => React.ReactNode
+  (
+    props: { chapter: InterviewChapter },
+  ) => React.ReactNode | Promise<React.ReactNode>
 > = {
   "react-memo": ReactMemoChapter,
   "usecallback-usememo": UseCallbackUseMemoChapter,
+  closure: ClosureChapter,
+  typescript: TypeScriptChapter,
 };
 
 export function generateStaticParams() {
@@ -38,9 +44,11 @@ export default async function InterviewChapterPage({
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">
           {chapter.title}
         </h1>
-        <p className="max-w-2xl text-sm leading-6 text-zinc-600">
-          {chapter.description}
-        </p>
+        {chapter.description ? (
+          <p className="max-w-2xl text-sm leading-6 text-zinc-600">
+            {chapter.description}
+          </p>
+        ) : null}
       </header>
 
       <DefinitionList definitions={chapter.definitions} />

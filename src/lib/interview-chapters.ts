@@ -183,6 +183,94 @@ export const interviewChapters: InterviewChapter[] = [
       },
     ],
   },
+  {
+    slug: "closure",
+    title: "클로저 (Closure)",
+    description:
+      "함수가 외부 변수를 기억하는 원리부터, 루프 함정·React stale closure·프라이빗 상태까지 실험합니다.",
+    definitions: [
+      {
+        term: "클로저 (Closure)",
+        meaning:
+          "함수와 그 함수가 선언된 렉시컬 환경(외부 변수들)의 조합입니다. 외부 함수 실행이 끝나도, 내부 함수는 그 외부 변수를 계속 참조할 수 있습니다.",
+      },
+      {
+        term: "렉시컬 스코프 (Lexical Scope)",
+        meaning:
+          "변수를 어디서 찾을지가 '코드를 작성한 위치'로 결정되는 규칙입니다. 호출 위치가 아니라 선언 위치가 기준입니다.",
+      },
+      {
+        term: "Stale Closure",
+        meaning:
+          "나중에 실행되는 콜백이 예전에 캡처한 값을 그대로 보고, 이미 바뀐 최신 state/props를 못 보는 현상입니다. React에서 특히 자주 등장합니다.",
+      },
+    ],
+    sections: [
+      {
+        id: "basics",
+        title: "기본 개념",
+        summary:
+          "createCounter가 반환한 함수가, 이미 끝난 외부 함수의 count를 계속 기억하는 모습을 봅니다.",
+        definition: {
+          term: "클로저",
+          meaning:
+            "내부 함수가 외부 함수의 변수에 접근·유지하는 것입니다. '값 복사'가 아니라 '변수 환경 참조'입니다.",
+        },
+      },
+      {
+        id: "loop-trap",
+        title: "루프 함정",
+        summary:
+          "var처럼 공유된 i vs let처럼 반복마다 새 i — 같은 클로저 코드라도 결과가 달라집니다.",
+        definition: {
+          term: "변수 바인딩",
+          meaning:
+            "클로저가 붙잡는 것은 그 순간의 숫자 복사본이 아니라, 변수 자체입니다. 변수가 나중에 바뀌면 클로저도 그 변경을 봅니다.",
+        },
+      },
+      {
+        id: "stale-closure",
+        title: "Stale Closure",
+        summary:
+          "setTimeout 콜백이 클릭 당시 count를 닫아두면, 그사이 state가 올라도 옛값이 출력됩니다.",
+        definition: {
+          term: "Stale Closure",
+          meaning:
+            "오래된 렌더에서 만든 함수가 그때의 state를 계속 참조하는 문제입니다. 타이머·구독·이벤트에서 흔합니다.",
+        },
+      },
+      {
+        id: "fix-stale",
+        title: "고치는 법",
+        summary:
+          "ref에 최신을 동기화하거나 setState 함수형 업데이트로 stale을 피하는 방법을 실험합니다.",
+        definition: {
+          term: "함수형 업데이트",
+          signature: "setState(prev => next)",
+          meaning:
+            "React가 최신 state를 prev로 넘겨 줍니다. 클로저에 닫힌 옛 state 대신 최신값으로 갱신할 수 있습니다.",
+        },
+      },
+      {
+        id: "private-state",
+        title: "프라이빗 상태",
+        summary:
+          "클로저 안에 둔 balance는 반환 메서드로만 접근 가능해, 객체 밖으로 노출되지 않습니다.",
+        definition: {
+          term: "데이터 은닉 (Data Hiding)",
+          meaning:
+            "외부에서 직접 만질 수 없는 상태를 클로저로 감추고, 공개 API(메서드)만 제공하는 패턴입니다.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "typescript",
+    title: "TypeScript",
+    description: "",
+    definitions: [],
+    sections: [],
+  },
 ];
 
 export function getChapter(slug: string) {

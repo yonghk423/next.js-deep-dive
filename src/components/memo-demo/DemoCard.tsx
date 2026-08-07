@@ -24,10 +24,10 @@ export function DemoCard({
 }) {
   const verdictLabel =
     verdict === "bad"
-      ? "memo 무력화 / 비효율"
+      ? "함정 · 주의"
       : verdict === "good"
         ? "올바른 사용"
-        : "불필요";
+        : "오해 · 불필요";
   const verdictClass =
     verdict === "bad"
       ? "bg-red-100 text-red-700"
