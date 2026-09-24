@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { AppProviders } from "@/components/providers/AppProviders";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,17 +14,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Next.js Deep Dive",
-  description: "면접 질문 챕터별 코드 실험실",
+  description: "Next.js 개념 실험실",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full bg-white antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <AppProviders>{children}</AppProviders>
+      <body className="flex min-h-full flex-col bg-white text-zinc-900">
+        {children}
       </body>
     </html>
   );

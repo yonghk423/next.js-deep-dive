@@ -1,12 +1,8 @@
 @import "tailwindcss";
 
-/* 시스템 다크모드와 무관하게 라이트 UI만 사용 */
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  color-scheme: light;
 }
 
 @theme inline {
